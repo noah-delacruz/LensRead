@@ -16,10 +16,15 @@ const CustomWebcam = () => {
         setImgSrc(imageSrc);
     }, [webcamRef])
 
+    // create retake function
+    const retakePicture = () => {
+        setImgSrc(null)
+    }
+
     return (
         <div className="container">
             {imgSrc ? <img src={imgSrc} alt="camera picture" /> : <Webcam height={600} width={600} ref={webcamRef}/>}
-            <Button variant="contained" onClick={takePicture}>Take Picture</Button>
+            {imgSrc ? <Button variant="contained" onClick={retakePicture}>Retake Picture</Button> : <Button variant="contained" onClick={takePicture}>Take Picture</Button>}
         </div>
     );
 };
